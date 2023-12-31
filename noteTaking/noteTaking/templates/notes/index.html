@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+</head>
+<body>
+    hello there
+    {% for vault in vaults %}
+        <a href = "{{vault.get_absolute_url}}"> {{vault.name}} </a><br>
+    {% endfor %}
+    {{request.user}}
+</body>
+</html>

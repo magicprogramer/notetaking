@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{note.title}}</title>
+    
+</head>
+<body>
+    <div id = "container">
+        <h1>{{note.title}}</h1>
+        <div id = "paragraphs">
+        {% for para in pragraph %}
+        <div class = "paragraph" style = "border : 1px red solid;">
+        <p>{{para.Text}}</p><br>
+        <a href = "{{para.get_absolute_url}}">expand</a>
+        <br>
+        </div>
+        {% endfor %}
+        </div>
+        <div id = "tags">
+            {% for tag in tags %}
+            <div class = "tag">{{tag.name}}</div>
+            {% endfor %}
+        </div>
+        <div id ="links">
+            <h2>links and additional resources</h2>
+            {% for link in links %}
+            <a href = "{{link.url}}">{{link.url}}</a><br>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
