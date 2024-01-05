@@ -9,7 +9,7 @@ def populate():
         populate_vaults()
         populate_note()
         populate_links()
-        populate_pragraph()
+      #  populate_pragraph()
         populate_tags()
         populate_note_tag()
 def populate_tags():

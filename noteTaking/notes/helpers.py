@@ -36,10 +36,11 @@ def retrive_notes(request):
         notes.append(obj)
     print(len(data))
     length = len(data)
+    data.reverse()
     if length < 10:
         request.session['Notes'] = data
     else:
-        request.sessoin['Notes'] = data[length - 10 : ]
+        request.session['Notes'] = data[length - 10 : ]
     request.session.modified = True
     print(request.session['Notes'])
     print("here")

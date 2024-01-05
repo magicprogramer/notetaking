@@ -9,6 +9,6 @@
         {% endfor %}
     </div>
     <div id = "addnote">
-        <a href = "{% url 'Note:note-create' vault.id %}">add a note</a>
+        <a href = "{% url 'Note:note-create' vault.id %}" class = "btn btn-primary">add a note</a>
     </div>
 {% endblock %}

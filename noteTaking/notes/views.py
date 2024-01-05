@@ -42,6 +42,8 @@ def pragraph(request, pragraph_id):
     return render(request, "notes/pragraph.html", {"p" : pragraph})
 @login_required
 def pop(request):
+    if request.user.is_staff == False:
+        return redirect("Note:main")
     populate()
     return HttpResponse("done")
 @login_required

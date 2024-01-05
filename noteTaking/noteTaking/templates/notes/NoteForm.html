@@ -8,6 +8,6 @@ create a note
     <form action = "" method = "post">
         {% csrf_token %}
         {{form|crispy}}
-        <input type = "submit" value = "add note">
+        <input type = "submit" value = "add note" class = "btn btn-primary">
     </form>
 {% endblock %}
