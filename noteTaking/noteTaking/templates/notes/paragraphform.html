@@ -1,0 +1,29 @@
+{% extends "notes/base.html" %}
+{%load crispy_forms_tags %} 
+
+{% block title%}
+create a paragraph at {{note.name}}
+{% endblock %}
+{% block activate_quillmedia %}
+{{form.media}}
+{% endblock %}
+{% block content %}
+    <form action = "
+    {% if update %}
+    {% url 'Note:Paragraph-Update' note_id paragraph_id %}
+    {% else %}
+    {% url 'Note:paragraph-create' note_id %}
+    {% endif %}
+    
+    
+    
+    
+    
+    
+    
+    " method = "post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type = "submit" value = "add paragraph">
+    </form>
+{% endblock %}

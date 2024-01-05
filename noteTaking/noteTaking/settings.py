@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qcf$lt1yh0ph_edrp(p#n2_p52vywpgxxx6&94lzh%tcddu7i3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,9 +38,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'notes',
-]
+    'django_quill',
+    'authentication',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'bootstrap5',
+    'notes']
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+REST_FRAMEWORK = {
+"DEFAULT_AUTHENTICATION_CLASSES": [
+    "rest_framework.authentication.BasicAuthentication",
+],
+"DEFAULT_PERMISSION_CLASSES": [
+    "rest_framework.permissions.IsAuthenticated"
+]
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

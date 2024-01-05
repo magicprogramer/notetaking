@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django_quill.fields import QuillField
+#from .forms import VaultForm
 # Create your models here.
 class Tag(models.Model):
     name = models.CharField(max_length=20)
@@ -31,16 +33,15 @@ class Note(models.Model):
         return self.title
 class Pragraph(models.Model):
     note = models.ForeignKey(Note, on_delete=models.CASCADE, related_name  = "pragraph")
-    Text = models.TextField()
+    content = QuillField()
     created = models.DateTimeField(auto_now_add=True)
     def get_absolute_url(self):
         return reverse("Note:Pragraph-Url", args=[str(self.id)])
     def __str__(self):
-        return f'{self.Text} - created at : {self.created}'
+        return f'pragraph created at created at : {self.created}'
     class Meta:
         ordering = ["created"]
     
 class Link(models.Model):
     note = models.ForeignKey(Note, on_delete=models.CASCADE, related_name = "link")
     url = models.CharField(max_length=300)
-

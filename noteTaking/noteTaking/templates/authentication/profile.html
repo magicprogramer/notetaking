@@ -1,0 +1,21 @@
+{% extends 'notes/base.html'%}
+{% block title %}
+{{request.user.username}}
+{% endblock %}
+{% block content %}
+Basic info:
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">user profile</h5>
+      <p class="card-text">
+        <ul class="list-group">
+            <li class="list-group-item">username : {{request.user.username}}</li>
+            <li class="list-group-item">email : {{email}}</li>
+            <li class="list-group-item">Total Number of Notes created : {{number_of_notes}}</li>
+            <li class="list-group-item">Total Number of current vaults : {{number_of_vaults}}</li>
+          </ul>
+      </p>
+      <a href="{% url 'Note:main' %}" class="btn btn-primary">return to main page</a>
+    </div>
+  </div>
+{% endblock %}

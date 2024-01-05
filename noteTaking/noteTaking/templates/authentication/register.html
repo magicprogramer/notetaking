@@ -1,0 +1,13 @@
+{% extends "authentication/base.html" %}
+{% block title %}
+register 
+{% endblock %}
+{% block content %}
+<form action = "{% url 'authentication:register' %}" method = "post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">
+        register
+    </button>
+</form>
+{% endblock %}

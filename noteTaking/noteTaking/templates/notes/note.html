@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{note.title}}</title>
-    
-</head>
-<body>
-    <div id = "container">
+{% extends "notes/base.html" %}
+{% block title %}
+{{note.title}}
+{% endblock %}
+
+{% block content %}
         <h1>{{note.title}}</h1>
         <div id = "paragraphs">
         {% for para in pragraph %}
         <div class = "paragraph" style = "border : 1px red solid;">
-        <p>{{para.Text}}</p><br>
+        <p>{{para.content.html|safe}}</p><br>
         <a href = "{{para.get_absolute_url}}">expand</a>
+        <a href = "{% url 'Note:paragraph-delete' note.id para.id %}">delete paragraph</a>
+        <a href = "{% url 'Note:Paragraph-Update' note.id para.id %}">Update paragraph</a>
         <br>
         </div>
         {% endfor %}
@@ -29,6 +27,6 @@
             <a href = "{{link.url}}">{{link.url}}</a><br>
             {% endfor %}
         </div>
+        <a href = "{% url 'Note:paragraph-create' note.id %}">add paragraph</a>
     </div>
-</body>
-</html>
+{% endblock %}

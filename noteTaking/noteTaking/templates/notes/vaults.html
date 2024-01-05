@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{vault.name}}</title>
-</head>
-<body>
+{% extends "notes/base.html" %}
+{% block title%}
+{{valut.name}}
+{% endblock %}
+{% block content %}
     <div id = "container">
         {% for post in posts %}
-        <a href = "{{post.get_absolute_url}}">{{post.title}}</a><br>
+        <a href = "{{post.get_absolute_url}}" >{{post.title}}</a><br>
         {% endfor %}
     </div>
-</body>
-</html>
+    <div id = "addnote">
+        <a href = "{% url 'Note:note-create' vault.id %}">add a note</a>
+    </div>
+{% endblock %}

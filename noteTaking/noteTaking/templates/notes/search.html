@@ -1,0 +1,12 @@
+{% extends 'notes/base.html' %}
+{% block title %}
+search results
+{% endblock %}
+{% block content %}
+<ul classs = "list-group">
+    {% for note in notes %}
+    <li class = "list-group-item">
+    <a href = "{{note.get_absolute_url}}">{{note.title}}</a></li>
+    {% endfor %}
+</ul>
+  {% endblock %}
