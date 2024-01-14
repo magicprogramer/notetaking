@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django_quill.fields import QuillField
+from authentication.models import Account
 #from .forms import VaultForm
 # Create your models here.
 class Tag(models.Model):
@@ -12,7 +13,7 @@ class Tag(models.Model):
     
 class Vault(models.Model):
     name = models.CharField(max_length=30)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
     
     def get_absolute_url(self):
         return reverse("Note:Vault-Url", args=[str(self.id)])
@@ -22,7 +23,7 @@ class Vault(models.Model):
 class Note(models.Model):
     title = models.CharField(max_length=40)
     Tags = models.ManyToManyField(Tag)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
     vault = models.ForeignKey(Vault, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add = True)
     modified = models.DateTimeField(auto_now = True)

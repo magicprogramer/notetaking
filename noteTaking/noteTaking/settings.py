@@ -40,12 +40,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_quill',
     'authentication',
+    'rest_framework_swagger',
     'crispy_forms',
     'crispy_bootstrap5',
     'bootstrap5',
     'notes',
-    
+    'anymail',
+    'drf_yasg',
     'api',
+    'verify_email.apps.VerifyEmailConfig',
     ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
@@ -59,6 +62,7 @@ REST_FRAMEWORK = {
     "rest_framework.permissions.IsAuthenticated"
 ]
 }
+AUTH_USER_MODEL = "authentication.Account"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -141,3 +145,32 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL="authentication:login"
+'''
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "ahmedalahly800@gmail.com"
+EMAIL_HOST_PASSWORD = "pfjqpiuqluuahtwd"
+
+DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
+'''
+ANYMAIL = {
+    "SENDINBLUE_API_KEY": 
+    "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",
+}
+EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
+EMAIL_HOST = 'smtp-relay.brevo.com'
+EMAIL_PORT = 2525
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = "randomuser19937man@gmail.com"
+EMAIL_HOST_PASSWORD = "9bEjTN6wvFYS2RXV"
+EXPIRE_AFTER = "10m"
+
+
+
+
+
+DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'

@@ -3,10 +3,12 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from .faker import populate
 from .helpers import update_recent_notes
 from .forms import VaultForm, NoteForm, ParagraphForm
+
 def index(request):
     if request.method == "GET":
         user = request.user
@@ -89,7 +91,7 @@ def createParagraph(request, note_id = None):
             instance.save()
             print(note_id)
             return redirect("Note:Note-Url", note_id = note_id)
-        return HttpResponse("paragraph error")
+        return redirect("Note:error", msg = "sorry invalid paragraph")
 @login_required
 def delete_paragraph(request, paragraph_id, note_id=None):
     Pragraph.objects.get(id = paragraph_id).delete()
@@ -116,3 +118,5 @@ def search(request):
         return render(request, "notes/search.html", {"notes" : notes})
 def error(request, msg):
     return render(request, "notes/error.html", {"msg" : msg})
+def aboutus(request):
+    return render(request, "notes/aboutus.html")

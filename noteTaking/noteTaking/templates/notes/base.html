@@ -52,6 +52,11 @@
                 </ul>
               </li>
               
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'schema-swagger-ui' %}">
+                  api docs
+                </a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Api
@@ -75,5 +80,18 @@
     {% block content %}
     content here
     {% endblock %}
+    {% block footer %}
+      <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">dissimlar!</h4>
+      <h2>
+        please note that this isn't meant to be a fully devloped project don't share any sensative information
+        also please understand that as this is a demo things like data reset website closure are more likely to happen
+        thanks
+      </h2>
+      </div>
+      <div class = "alert alert-info">
+        visit <a href = "{% url 'Note:aboutus' %}">this page</a> to make sense what this is about
+      </div>
+      {% endblock %}
 </body>
 </html>

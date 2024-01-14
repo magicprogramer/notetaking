@@ -3,10 +3,19 @@
 homepage
 {% endblock %}
 {% block content %}
+    {% if vaults %}
     {% for vault in vaults %}
         <a href = "{{vault.get_absolute_url}}" class="btn btn-primary"> {{vault.name}} </a><br>
     {% endfor %}
     <a href = "{% url 'Note:vault-create' %}">
         add a vault
     </a>
+    {% else %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <p class="card-text">Sorry vaults currently are empty .</p>
+          <a href="{% url 'Note:vault-create' %}" class="btn btn-primary">add a vault</a>
+        </div>
+      </div>
+    {% endif %}
 {% endblock %}

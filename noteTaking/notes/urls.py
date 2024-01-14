@@ -13,5 +13,6 @@ urlpatterns = [
     path("paragraph/update/<int:note_id>/<int:paragraph_id>", views.update_paragraph, name= "Paragraph-Update"),
     path("pop", views.pop),
     path("notes/notes/search", views.search, name="search"),
-    path("error/<str:msg>", views.error, name="error")
+    path("error/<str:msg>", views.error, name="error"),
+    path('notes/aboutus', views.aboutus, name="aboutus")
 ]
