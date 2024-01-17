@@ -1,6 +1,6 @@
 # Django Notetaking App
 
-This project serves as a Django framework practice exercise, focusing on building a notetaking app reminiscent of Obsidian.
+This project serves as a Django framework practice exercise, focusing on building a notetaking app .
 
 ## Demo
 
