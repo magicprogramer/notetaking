@@ -14,3 +14,5 @@ Future plans for this project include:
 - Incorporating a section for detailed explanations of encountered technologies during development, such as Bootstrap, SMTP services, Django-Quill, and more.
 
 Stay tuned for updates and feel free to contribute!
+
+**Note:** After cloning the repository, you will need to create an account on [Brevo](https://app.brevo.com/), a SMTP service provider. Then, create an API key and use it, along with other configurations to set up the SMTP server in the `settings.py` file which we will use to send verfication emails.
