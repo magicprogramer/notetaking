@@ -7,10 +7,10 @@ from verify_email.email_handler import send_verification_email
 from  notes.models import *
 from django.contrib.auth import get_user_model
 from .helpers import delete_not_activated_users
-def register(request):
+def register(request, msg = None):
     if request.method == "GET":
         form  = RegisterForm()
-        return render(request, "authentication/register.html", {"form" : form})
+        return render(request, "authentication/register.html", {"form" : form, "msg" : msg})
     else:
         form = RegisterForm(request.POST)
         delete_not_activated_users()
@@ -18,11 +18,15 @@ def register(request):
             instance = form.save(commit=False)
             if get_user_model().objects.filter(email = instance.email) or \
                 get_user_model().objects.filter(username=instance.username):
-                return redirect("Note:error",msg = "sorry username or email already exist")
-            inactive_user = send_verification_email(request, form)
+                return redirect("authentication:register",msg = "sorry username or email already exist")
+            try:
+                inactive_user = send_verification_email(request, form)
+            except Exception:
+                redirect("authentication:register", msg = "sorry smtp server is currently unavailable try later")
             print(inactive_user.is_active)
             return redirect("authentication:login", send_verfication="OK")
-        return redirect("Note:error", msg = "sorry something is wrong please try again")
+        errors = [error for error in form.errors.values()]
+        return redirect("authentication:register", msg = errors)
 def login_user(request, send_verfication=None):
     print("not here")
     if request.method == "GET":

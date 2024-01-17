@@ -157,16 +157,18 @@ EMAIL_HOST_PASSWORD = "pfjqpiuqluuahtwd"
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 '''
 ANYMAIL = {
-    "SENDINBLUE_API_KEY": 
-    "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",
+    "SENDINBLUE_API_KEY":
+    #create an account at brevo then add your api key here 
+    "",
 }
 EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
 EMAIL_HOST = 'smtp-relay.brevo.com'
 EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = "randomuser19937man@gmail.com"
-EMAIL_HOST_PASSWORD = "9bEjTN6wvFYS2RXV"
+#add your username, password which are provided when you login to brevo
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 EXPIRE_AFTER = "10m"
 
 

@@ -110,7 +110,7 @@ def update_paragraph(request, note_id, paragraph_id):
             instance = form.save()
             print(paragraph.id, instance.id)
             return redirect("Note:Note-Url", note_id=note_id)
-        return redirect("Note:error", msg = "sorry something is wrong")
+        return redirect("Note:error", msg = form.errors)
 @login_required
 def search(request):
     if request.method == "POST":

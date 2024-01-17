@@ -3,6 +3,11 @@
 register 
 {% endblock %}
 {% block content %}
+{% if msg %}
+<div class="alert alert-danger" role="alert">
+    {{msg}}
+  </div>
+{% endif %}
 <form action = "{% url 'authentication:register' %}" method = "post">
     {% csrf_token %}
     {{form.as_p}}
